@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<section>
+						<h2>
+							How to <span style="color: royalblue;">Flex</span> in the web
+						</h2>
+					</section>
+					<section>
+						<h3>Flexboxes</h3>
+						<ul>
+							<li class="fragment">What are they?</li>
+							<li class="fragment">How do they work?</li>
+							<li class="fragment">How to use them?</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h4>What are <span style="color: royalblue;">Flexboxes</span>?</h4>
+					<p>Flexboxes are one of the modern ways to layout elements on the page. </p>
+				</section>
+				<section>
+					<section data-auto-animate>
+						<p data-id="title">Regular div layout</p>
+						<pre data-id="code"><code class="hljs javascript" data-trim data-line-numbers>
+							<div class="wrapper">
+								<div class="box">1</div>
+								<div class="box">2</div>
+								<div class="box">3</div>
+								<div class="box">4</div>
+							</div>
+						</code></pre>
+						<div class="wrapper" data-id="wrapper">
+							<div class="box" data-id="box11" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box12" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box13" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box14" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<p data-id="title">Flexbox layout</p>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers>
+							.wrapper {
+								display: flex;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex;">
+							<div class="box" data-id="box11" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box12" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box13" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box14" style="background-color: rebeccapurple;">4</div>
+							<div class="axis cross vertical fragment" data-fragment-index="2"></div>
+							<div class="axis main horizontal fragment" data-fragment-index="1"></div>
+						</div>
+						<i class="fragment" data-fragment-index="1"><span style="color: red;">Main</span></i>
+						<i class="fragment" data-fragment-index="2">and <span style="color: blue;">cross</span> axes</i>
+					</section>
+				</section>
+				<section>
+					<p data-id="title">Flex directions</p>
+					<section data-auto-animate data-auto-animate-restart>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="3">
+							.wrapper {
+								display: flex;
+								flex-direction: row;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; flex-direction: row;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+						<div data-id="arrow" style="color: red;">→</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="3">
+							.wrapper {
+								display: flex;
+								flex-direction: row-reverse;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; flex-direction: row-reverse;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+						<div data-id="arrow" style="color: red;">←</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="3">
+							.wrapper {
+								display: flex;
+								flex-direction: column;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; flex-direction: column;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+						<div data-id="arrow" style="color: red;">↓</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="3">
+							.wrapper {
+								display: flex;
+								flex-direction: column-reverse;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; flex-direction: column-reverse;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+						<div data-id="arrow" style="color: red;">↑</div>
+					</section>
+				</section>
+				<section>
+					<p data-id="title">Flex wrapping</p>
+					<section data-auto-animate data-auto-animate-restart>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="3-4, 7">
+							.wrapper {
+								display: flex;
+								width: 100px;
+								flex-wrap: nowrap;
+							}
+							.box {
+								width: 50px;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; width: 100px; flex-wrap: nowrap;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="4">
+							.wrapper {
+								display: flex;
+								width: 100px;
+								flex-wrap: wrap;
+							}
+							.box {
+								width: 50px;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; width: 100px; flex-wrap: wrap;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="4">
+							.wrapper {
+								display: flex;
+								width: 100px;
+								flex-wrap: wrap-reverse;
+							}
+							.box {
+								width: 50px;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; width: 100px; flex-wrap: wrap-reverse;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+				</section>
+				<section data-auto-animate data-auto-animate-restart>
+					<p data-id="title">Shorthand for direction and wrap</p>
+					<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="4|5">
+						.wrapper {
+							display: flex;
+							width: 100px;
+							flex-flow: row-reverse wrap;
+							flex-flow: wrap row-reverse;
+						}
+					</code></pre>
+					<div class="wrapper" data-id="wrapper" style="display: flex; width: 100px; flex-flow: wrap row-reverse;">
+						<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+						<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+						<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+						<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+					</div>
+				</section>
+				<section>
+					<p data-id="title">Content alignment</p>
+					<section data-auto-animate data-auto-animate-restart>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="5,8">
+							.wrapper {
+								display: flex;
+								width: 100px;
+								flex-flow: wrap row-reverse;
+								align-content: stretch;
+							}
+							.box {
+								height: auto;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; width: 100px; flex-flow: wrap row-reverse; align-content: stretch;">
+							<div class="box" data-id="box1" style="background-color: royalblue; height: auto;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue; height: auto;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue; height: auto;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple; height: auto;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="5">
+							.wrapper {
+								display: flex;
+								width: 100px;
+								flex-flow: wrap row-reverse;
+								align-content: start;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; width: 100px; flex-flow: wrap row-reverse; align-content: start;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="5">
+							.wrapper {
+								display: flex;
+								width: 100px;
+								flex-flow: wrap row-reverse;
+								align-content: center;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; width: 100px; flex-flow: wrap row-reverse; align-content: center;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="5">
+							.wrapper {
+								display: flex;
+								width: 100px;
+								flex-flow: wrap row-reverse;
+								align-content: end;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; width: 100px; flex-flow: wrap row-reverse; align-content: end;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="5">
+							.wrapper {
+								display: flex;
+								width: 100px;
+								flex-flow: wrap row-reverse;
+								align-content: space-between;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; width: 100px; flex-flow: wrap row-reverse; align-content: space-between;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="5">
+							.wrapper {
+								display: flex;
+								width: 100px;
+								flex-flow: wrap row-reverse;
+								align-content: space-around;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; width: 100px; flex-flow: wrap row-reverse; align-content: space-around;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="5">
+							.wrapper {
+								display: flex;
+								width: 100px;
+								flex-flow: wrap row-reverse;
+								align-content: space-evenly;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; width: 100px; flex-flow: wrap row-reverse; align-content: space-evenly;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<p data-id="title">Positioning on the main axis</p>
+					<section data-auto-animate data-auto-animate-restart>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="3,6">
+							.wrapper {
+								display: flex;
+								justify-content: start;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; justify-content: start;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="3,6">
+							.wrapper {
+								display: flex;
+								justify-content: center;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; justify-content: center;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="3,6">
+							.wrapper {
+								display: flex;
+								justify-content: end;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; justify-content: end;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="3,6">
+							.wrapper {
+								display: flex;
+								justify-content: space-between;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; justify-content: space-between;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="3,6">
+							.wrapper {
+								display: flex;
+								justify-content: space-around;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; justify-content: space-around;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="3,6">
+							.wrapper {
+								display: flex;
+								justify-content: space-evenly;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; justify-content: space-evenly;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<p data-id="title">Positioning on the cross axis</p>
+					<section data-auto-animate data-auto-animate-restart>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="3,6">
+							.wrapper {
+								display: flex;
+								align-items: stretch;
+							}
+							.box {
+								height: auto;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; align-items: stretch;">
+							<div class="box" data-id="box1" style="background-color: royalblue; height: auto;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue; height: auto;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue; height: auto;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple; height: auto;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="3">
+							.wrapper {
+								display: flex;
+								align-items: start;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; align-items: start;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="3">
+							.wrapper {
+								display: flex;
+								align-items: center;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; align-items: center;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="3">
+							.wrapper {
+								display: flex;
+								align-items: end;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; align-items: end;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="3,6,9">
+							.wrapper {
+								display: flex;
+								align-items: baseline;
+							}
+							.box2 {
+								padding-top: 20px;
+							}
+							.box3 {
+								padding-bottom: 20px;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; align-items: baseline;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue; padding-top: 20px;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue; padding-bottom: 20px;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="3,6">
+							.wrapper {
+								display: flex;
+								align-items: start;
+							}
+							.box2, .box4 {
+								align-self: end;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex; align-items: start;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue; align-self: end;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple; align-self: end;">4</div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<p data-id="title">Order in flexboxes</p>
+					<section data-auto-animate data-auto-animate-restart>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="5">
+							.wrapper {
+								display: flex;
+							}
+							.box1, .box2, .box3, .box4 {
+								order: 0;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="5">
+							.wrapper {
+								display: flex;
+							}
+							.box3 {
+								order: 1;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue; order: 1;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="5,8">
+							.wrapper {
+								display: flex;
+							}
+							.box3 {
+								order: 1;
+							}
+							.box4 {
+								order: -1;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex;">
+							<div class="box" data-id="box1" style="background-color: royalblue;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue; order: 1;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple; order: -1;">4</div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<p data-id="title">Actual flex</p>
+					<section data-auto-animate data-auto-animate-restart>
+						<p>'<span style="color: royalblue;">flex</span>' property is a shorthand for the three other properties</p>
+						<ul>
+							<li>flex-grow</li>
+							<li>flex-shrink</li>
+							<li>flex-basis</li>
+						</ul>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="6">
+							.wrapper {
+								display: flex;
+								width: 400px;
+							}
+							.box {
+								flex-basis: 75px;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex;">
+							<div class="box" data-id="box1" style="background-color: royalblue; flex-basis: 75px;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue; flex-basis: 75px;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue; flex-basis: 75px;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple; flex-basis: 75px;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="6-7">
+							.wrapper {
+								display: flex;
+								width: 400px;
+							}
+							.box {
+								flex-basis: 200px;
+								flex-shrink: 1;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex;">
+							<div class="box" data-id="box1" style="background-color: royalblue; flex-basis: 200px;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue; flex-basis: 200px;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue; flex-basis: 200px;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple; flex-basis: 200px;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="6,9">
+							.wrapper {
+								display: flex;
+								width: 400px;
+							}
+							.box {
+								flex-basis: 200px;
+							}
+							.box1 {
+								flex-shrink: 2;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex;">
+							<div class="box" data-id="box1" style="background-color: royalblue; flex-basis: 200px; flex-shrink: 2;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue; flex-basis: 200px;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue; flex-basis: 200px;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple; flex-basis: 200px;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="6,9">
+							.wrapper {
+								display: flex;
+								width: 400px;
+							}
+							.box {
+								flex-basis: 200px;
+							}
+							.box1 {
+								flex-shrink: 3;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex;">
+							<div class="box" data-id="box1" style="background-color: royalblue; flex-basis: 200px; flex-shrink: 3;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue; flex-basis: 200px;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue; flex-basis: 200px;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple; flex-basis: 200px;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="6,9,12">
+							.wrapper {
+								display: flex;
+								width: 400px;
+							}
+							.box {
+								flex-basis: 200px;
+							}
+							.box1 {
+								flex-shrink: 3;
+							}
+							.box2 {
+								flex-shrink: 3;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex;">
+							<div class="box" data-id="box1" style="background-color: royalblue; flex-basis: 200px; flex-shrink: 3;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue; flex-basis: 200px; flex-shrink: 3;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue; flex-basis: 200px;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple; flex-basis: 200px;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="6,9">
+							.wrapper {
+								display: flex;
+								width: 400px;
+							}
+							.box {
+								flex-basis: 75px;
+							}
+							.box1 {
+								flex-grow: 1;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex;">
+							<div class="box" data-id="box1" style="background-color: royalblue; flex-basis: 75px; flex-grow: 1;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue; flex-basis: 75px;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue; flex-basis: 75px;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple; flex-basis: 75px;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="6,7">
+							.wrapper {
+								display: flex;
+								width: 400px;
+							}
+							.box {
+								flex-basis: 75px;
+								flex-grow: 1;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex;">
+							<div class="box" data-id="box1" style="background-color: royalblue; flex-basis: 75px; flex-grow: 1;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue; flex-basis: 75px; flex-grow: 1;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue; flex-basis: 75px; flex-grow: 1;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple; flex-basis: 75px; flex-grow: 1;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="6-7,10">
+							.wrapper {
+								display: flex;
+								width: 400px;
+							}
+							.box {
+								flex-basis: 75px;
+								flex-grow: 1;
+							}
+							.box1 {
+								flex-grow: 3;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex;">
+							<div class="box" data-id="box1" style="background-color: royalblue; flex-basis: 75px; flex-grow: 3;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue; flex-basis: 75px; flex-grow: 1;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue; flex-basis: 75px; flex-grow: 1;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple; flex-basis: 75px; flex-grow: 1;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="6,9,12">
+							.wrapper {
+								display: flex;
+								width: 400px;
+							}
+							.box1, .box2, .box3, .box4 {
+								flex: 0 1 75px;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex;">
+							<div class="box" data-id="box1" style="background-color: royalblue; flex: 0 1 75px;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue; flex: 0 1 75px;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue; flex: 0 1 75px;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple; flex: 0 1 75px;">4</div>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code"><code class="hljs css" data-trim data-line-numbers="6,9,12">
+							.wrapper {
+								display: flex;
+								width: 400px;
+							}
+							.box1, .box2, .box3, .box4 {
+								flex: 0 1 200px;
+							}
+						</code></pre>
+						<div class="wrapper" data-id="wrapper" style="display: flex;">
+							<div class="box" data-id="box1" style="background-color: royalblue; flex: 0 1 200px;">1</div>
+							<div class="box" data-id="box2" style="background-color: slateblue; flex: 0 1 200px;">2</div>
+							<div class="box" data-id="box3" style="background-color: mediumslateblue; flex: 0 1 200px;">3</div>
+							<div class="box" data-id="box4" style="background-color: rebeccapurple; flex: 0 1 200px;">4</div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<h2>
+						Thanks for watching!
+					</h2>
+					<p>Have a nice day!</p>
+				</section>
+			</div>
+		</div>
+
+		<style>
+			.wrapper {
+				position: relative;
+				width: 400px;
+				height: 200px;
+				background-color: rgb(121, 121, 121); 
+				box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
+				margin: auto;
+			}
+			.box {
+				width: 50px; 
+				height: 50px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.axis {
+				position: absolute;
+
+				&.horizontal {
+				top: 50%;
+				transform: translateY(-50%);
+				width: 100%;
+				height: 5px;
+				}
+				&.vertical {
+					left: 50%;
+					transform: translateX(-50%);
+					width: 5px;
+					height: 100%;
+				}
+				&.main {
+					background-color: red;
+				}
+				&.cross {
+					background-color: blue;
+				}
+			}
+		</style>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
